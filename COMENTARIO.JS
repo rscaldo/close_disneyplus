@@ -91,4 +91,31 @@ npm run build watch
 NO .gitignore PODEMOS IGNORAR TAMBEM A PASTA dist
 
 TEMOS QUE IMPORTAR O ARQUIVO CSS NO HTML, IMPORTAR O ARQUIVO QUE ESTA NO DIST
+
+AULA 2
+VAMOS INSTALAR: npm i --save-dev gulp-imagemin@7.1.0
+
+NO gulpefile.js TEMOS:
+const imagemin = require('gulp-imagemin')
+
+function images() {
+  return gulp
+    .src("./src/images/** /*")
+    .pipe(imagemin())
+    .pipe(gulp.dest("./dist/images"));
+}
+
+NO DEFAULT TEMOS QUE SUBSTITUIR POR:
+exports.default = gulp.parallel(styles, images)
+
+APÓS TEMOS QUE RODAR npm run build 
+
+VAMOS NO main.scss E VAMOS CRIAR OS PADRÕES QUE VÃO SER USADOS NO NOSSO PROJETO, PODEMOS CRIAR MIXINS PARA ALGUNS DOS PADRÕES
+
+NO package.json VAMOS CRIAR UM SCRIPT PARA RODAR O WATCH
+    "dev": "gulp watch",
+
+NO CONSOLE: npm run dev
+
+VAMOS CRIAR UM NOVO ARQUIVO EM src/styles/_hero.scss O HERO É COMO SE FOSSE UM BANNER
  */

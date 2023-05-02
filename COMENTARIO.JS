@@ -118,4 +118,46 @@ NO package.json VAMOS CRIAR UM SCRIPT PARA RODAR O WATCH
 NO CONSOLE: npm run dev
 
 VAMOS CRIAR UM NOVO ARQUIVO EM src/styles/_hero.scss O HERO É COMO SE FOSSE UM BANNER
+
+AULA 4
+
+PARA PROGRAMAR OS BOTOES TEMOS QUE ADICIONAR ALGUNS PARAMETROS NO HTML
+DE:
+<section class="shows">
+    <nav class="shows__tabs">
+      <button class="shows__tabs__button shows__tabs__button--is-active">Em breve</button>
+
+PARA:
+<section class="shows">
+    <nav class="shows__tabs">
+      <button data-tab-button='em_breve' class="shows__tabs__button shows__tabs__button--is-active">Em breve</button>
+
+E NA UL TEMOS QUE ADICIONAR TEMOS QUE ADICONAR NAS 3, MAS O ID VAI SER DIFERENTE:
+DE:
+<ul class="shows__list shows__list--is-active">
+
+PARA:
+<ul data-tab-id='em_breve' class="shows__list shows__list--is-active">
+
+CRIAR O ARQUIVO main.js E COMEÇAMOS COM A FUNÇÃO QUE ACOMPANHA QUANDO O DOM TERMINOU DE CARREGAR
+document.addEventListener('DOMContentLoaded', function(){
+  const buttons = document.querySelectorAll('[data-tab-button]')
+})
+SELECIONAMOS TODOS OS BOTOES NA FORMA DE ARRAY, AGORA VAMOS ADICIONAR UM EVENTO A ESSES BOTOES
+
+document.addEventListener('DOMContentLoaded', function(){
+  const buttons = document.querySelectorAll('[data-tab-button]');
+  
+  for{let i=0; i<buttons.length; i++}{
+    buttons[i].addEventListener('click', function(botao))
+  }
+})
+
+AULA 5 - CRIANDO A LISTAGEM DE PLANOS
+
+PODEMOS TRANSFERIR A CONFIGURAÇÃO GENERICA DO BOTÃO QUE ESTAVA NO __hero.scss PARA main.scss
+
+PARA SELECIONAR UM DETERMINADO ELEMENTO TEMOS O ATRIBUTO nth-child(2)
+
+AULA 6
  */

@@ -159,5 +159,82 @@ PODEMOS TRANSFERIR A CONFIGURAÇÃO GENERICA DO BOTÃO QUE ESTAVA NO __hero.scss
 
 PARA SELECIONAR UM DETERMINADO ELEMENTO TEMOS O ATRIBUTO nth-child(2)
 
-AULA 6
+AULA 8 - CRIANDO O FAQ
+PARA DEIXAR O CONTEUDO DAS RESPOSTAS INVISIVEL
+ &__answer {
+        height: 0;
+        overflow: hidden;
+      }
+
+O COMPORTAMENTE DE ABRIR E FECHAR DO FAQ É REALIZADO COM JS
+
+CRIAMOS UMA CONSTANTE QUE VAI SELECIONAR [data-faq-question]
+const questions = document.querySelectorAll('[data-faq-question]')
+
+TEMOS QUE COLOCAR ESSE ATRIBUTO NO HTML
+        <div class="faq__questions__item__question" data-faq-question>
+
+DEPOIS VAMOS ADICIONAR O COMPORTAMENTO DE CLIQUE
+for (let i=0; i <question.length; i++){
+  questions[i].addEventListener('click', abreOuFechaResposta)
+}
+
+
+PARA ADICONAR O COMPORTAMENTO DO CABEÇALHO, VAMO ADICIONAR UMA CLASSE HIDDEN A ALGUNS ELEMENTOS E DEPOIS VAMOS REMOVER ESSA CLASSE COM JAVASCRIPT, NOSSA IDEIA É QUE A PARTIR DA SECTION HERO OS OUTROS BOTOES APAREÇAM, PORTANTO TEMOS QUE SELECIONAR A SECTION HERO
+const heroSection = document.querySelector('.hero')
+
+PARA SABER QUANDO A ROLAGEM DA PÁGINA PASSOU PELO .hero NOS PRECISAMOS SABER A ALTURA DELE, PARA PEGAR A ALTURA DE UMA ELEMENTO USAMOS A PROPRIEDADE .clientHeight
+
+const alturaHero = heroSection.clientHeight;
+
+PARA IR ACOMPANHANDO A ROLAGEM DA PAGINA QUE O USUÁRIO VAI REALIZAR NO NOSSO SITE TEMOS EM EVENTO
+window.addEventListener('scroll'), function(){
+  console.log(window.scrollY)
+}
+
+  AGORA TEMOS QUE REALIZAR UMA VERIFICAÇÃO, QUANDO O VALOR FOR MAIOR QUE A ALTURA DO HERO, PORTANTO QUANDO O VALOR FOR MAIOR QUE A NOSSA VARIAVEL alturaHero  OS OUTROS ELEMENTOS VÃO APARECER, 
+window.addEventListener('scroll'), function(){
+  const posicaoAtual = window.scrollY
+
+  if (posicaoAtual < alturaHero){
+    console.log('esconde elementos')
+  }
+}
+COM ESSE IF TEMOS QUE QUANDO A posicaoAtual FOR MENOR QUE A alturaHero NOS ESCONDEMOS OS ELEMENTOS E ELES SÓ VÃO APARECER QUANDO FOR MAIOR QUE A alturaHero
+
+AGORA VAMOS APAGAR AS OPÇÕES DE hidden QUE COLOCAMOS NO CSS E HTML, E CRIAR OUTRAS COISAS
+
+AGORA VAMOS CRIAR UMA FUNÇÃO QUE VAI ADICIONAR A CLASSE NO HEADER --is-hidden
+function ocultaElementosDoHeader(){
+  const header = document.querySelector('header');
+  header.classList.add('header--is-hidden')
+}
+
+TEMOS QUE CHAMAR ESSA FUNÇÃO QUANDO A posicaoAtual < alturaHero, PORTANTO VAMOS SUBSTITUIR:
+DE:
+ window.addEventListener("scroll", function () {
+    const posicaoAtual = window.scrollY;
+
+    if (posicaoAtual < alturaHero) {
+      console.log("esconde elementos");
+    }
+  });
+
+  PARA:
+   window.addEventListener("scroll", function () {
+    const posicaoAtual = window.scrollY;
+
+    if (posicaoAtual < alturaHero) {
+      ocultaElementosDoHeader();
+    }else{
+      exibeElementosDoHeader()
+    }
+  });
+
+
+  CRIAMOS A FUNÇÃO exibiElementosDoHeader
+  function ocultaElementosDoHeader(){
+  const header = document.querySelector('header');
+  header.classList.remove('header--is-hidden')
+}
  */

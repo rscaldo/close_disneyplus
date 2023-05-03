@@ -237,4 +237,19 @@ DE:
   const header = document.querySelector('header');
   header.classList.remove('header--is-hidden')
 }
+
+PARA MINIFICAR O JS TEMOS QUE INSTALAR O PLUGIN UGLiFY, CONFIGURAR NO gulpfile.js
+
+const uglify = require('gulp-uglify)
+
+TEMOS QUE CRIAR UMA NOVA FUNÇÃO
+
+function scripts(){
+  return gulp.src('./src/scripts/*.js')
+  .pipe(uglify())
+  .pipe(gulp.dest('./dist/js'))
+}
+
+COLOCAR nossa função SCRIPT NA FILA DE EXECUÇÃO DE TAREFAS, TANTO NO DEFAULT COMO NO WATCH
+
  */
